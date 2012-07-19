@@ -176,7 +176,10 @@
     return $('form[data-validate]').validate();
   });
 
-  window.ClientSideValidations = {
+  if (window.ClientSideValidations == undefined) {
+    window.ClientSideValidations = {};
+  }
+  window.ClientSideValidations = $.extend({
     forms: {},
     validators: {
       all: function() {
@@ -501,6 +504,6 @@
         pass: function(form, eventData) {}
       }
     }
-  };
+  }, window.ClientSideValidations);
 
 }).call(this);
